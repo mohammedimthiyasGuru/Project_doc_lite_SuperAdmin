@@ -7,28 +7,28 @@ export const navItems: INavData[] = [
     icon: 'icon-speedometer',
   },
   {
-    name: 'Add Category',
-    url: '/base/Add_Cata',
+    name: 'Company Details',
+    url: '/base/company_details',
     icon: 'icon-speedometer',
   },
   {
-    name: 'Item List',
-    url: '/base/itemlist',
+    name: 'Subscriber Details',
+    url: '/base/subscriber_details',
     icon: 'icon-speedometer',
   },
   {
-    name: 'Billing Screen',
-    url: '/base/Billing_Screen',
+    name: 'Payment Details',
+    url: '/base/payment_details',
     icon: 'icon-speedometer',
   },
   {
-    name: 'Reports',
-    url: '/base/Reports',
+    name: 'Notification Details',
+    url: '/base/notification_details',
     icon: 'icon-speedometer',
   },
   {
-    name: 'Quantity Rprts',
-    url: '/base/quantityreport',
+    name: 'Mail Details',
+    url: '/base/mail_details',
     icon: 'icon-speedometer',
   },
 ];

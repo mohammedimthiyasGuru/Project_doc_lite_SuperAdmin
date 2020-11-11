@@ -54,7 +54,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 
-import { AddcataComponent } from './addcata/addcata.component';
+import { CompanydetailsComponent } from './companydetails/companydetails.component';
+import { PaymentdetailsComponent } from './paymentdetails/paymentdetails.component';
+import { SubscribersComponent } from './subscribers/subscribers.component';
+import { NotificationComponent } from './notification/notification.component';
+import { MaildetailsComponent } from './maildetails/maildetails.component';
 
 
 @NgModule({
@@ -80,7 +84,11 @@ import { AddcataComponent } from './addcata/addcata.component';
 
     FormsComponent,
     TablesComponent,
-    AddcataComponent,
+    CompanydetailsComponent,
+    PaymentdetailsComponent,
+    SubscribersComponent,
+    NotificationComponent,
+    MaildetailsComponent,
   ]
 })
 export class BaseModule { }

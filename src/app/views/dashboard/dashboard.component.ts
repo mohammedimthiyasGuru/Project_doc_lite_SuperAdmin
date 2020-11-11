@@ -43,9 +43,7 @@ export class DashboardComponent implements OnInit {
     this.End_Date = this.datePipe.transform(this.End_Date,"yyyy-MM-dd");
 
     this.lastday();
-    this.lastweek();
-    this.lastmonth();
-    this.lastyear();
+
   }
 
 
@@ -74,205 +72,48 @@ export class DashboardComponent implements OnInit {
    'enddate' : this.End_Date
 }
 console.log(a);
-this._api.getlist_billing(a).subscribe(
- (response: any) => {
-   console.log(response.Data);
-    let finaldata = [];
-   for(let a  = 0 ;a  < response.Data.length; a ++){
-     let item_list = response.Data[a].Item_Details;
-     for(let b = 0  ; b < item_list.length; b ++)
-     {
-       let cc = {
-         'Date' :  response.Data[a].createdAt,
-         'Bill_no' : response.Data[a].Bill_No,
-         'Cat' : item_list[b].Cat_Name,
-         'item_name' : item_list[b].Item_name,
-         'item_code' : item_list[b].Item_code,
-         'price' : item_list[b].Item_price,
-         'quantity' : item_list[b].Quantity,
-         'total' : item_list[b].Total_price,
-       }
-       finaldata.push(cc);
-       this.lastday_amt = this.lastday_amt + item_list[b].Total_price;
-     }
-     if(a == response.Data.length - 1){
-       this.datas = finaldata ;
-       console.log(this.datas);
-     }
-     }
+// this._api.getlist_billing(a).subscribe(
+//  (response: any) => {
+//    console.log(response.Data);
+//     let finaldata = [];
+//    for(let a  = 0 ;a  < response.Data.length; a ++){
+//      let item_list = response.Data[a].Item_Details;
+//      for(let b = 0  ; b < item_list.length; b ++)
+//      {
+//        let cc = {
+//          'Date' :  response.Data[a].createdAt,
+//          'Bill_no' : response.Data[a].Bill_No,
+//          'Cat' : item_list[b].Cat_Name,
+//          'item_name' : item_list[b].Item_name,
+//          'item_code' : item_list[b].Item_code,
+//          'price' : item_list[b].Item_price,
+//          'quantity' : item_list[b].Quantity,
+//          'total' : item_list[b].Total_price,
+//        }
+//        finaldata.push(cc);
+//        this.lastday_amt = this.lastday_amt + item_list[b].Total_price;
+//      }
+//      if(a == response.Data.length - 1){
+//        this.datas = finaldata ;
+//        console.log(this.datas);
+//      }
+//      }
 
- }
-);
-
-
+//  }
+// );
 
 
 
 
 
-}
-
-lastweek(){
-   //Get today's date using the JavaScript Date object.
-   var ourDate = new Date();
-   var ourDate1 = new Date();
-    
-   //Change it so that it is 7 days in the past.
-   var pastDate = ourDate.getDate() - 7;
-   ourDate.setDate(pastDate);
-
-   var pastDate1 = ourDate1.getDate() + 1;
-   ourDate1.setDate(pastDate1);
-    
-   //Log the date to our web console.
-   console.log(ourDate);
-   console.log(ourDate1);
-
- this.Start_Date = this.datePipe.transform(ourDate,"yyyy-MM-dd");
- this.End_Date = this.datePipe.transform(ourDate1,"yyyy-MM-dd");
- let a = {
-   'startdate' : this.Start_Date,
-   'enddate' : this.End_Date
-}
-console.log(a);
-this._api.getlist_billing(a).subscribe(
- (response: any) => {
-   console.log(response.Data);
-    let finaldata = [];
-   for(let a  = 0 ;a  < response.Data.length; a ++){
-     let item_list = response.Data[a].Item_Details;
-     for(let b = 0  ; b < item_list.length; b ++)
-     {
-       let cc = {
-         'Date' :  response.Data[a].createdAt,
-         'Bill_no' : response.Data[a].Bill_No,
-         'Cat' : item_list[b].Cat_Name,
-         'item_name' : item_list[b].Item_name,
-         'item_code' : item_list[b].Item_code,
-         'price' : item_list[b].Item_price,
-         'quantity' : item_list[b].Quantity,
-         'total' : item_list[b].Total_price,
-       }
-       finaldata.push(cc);
-       this.lastweek_amt = this.lastweek_amt + item_list[b].Total_price;
-     }
-     if(a == response.Data.length - 1){
-       this.datas = finaldata ;
-       console.log(this.datas);
-     }
-     }
-
- }
-);
 
 
 }
 
-lastmonth(){
- //Get today's date using the JavaScript Date object.
- var ourDate = new Date();
- var ourDate1 = new Date();
-  
- //Change it so that it is 7 days in the past.
- var pastDate = ourDate.getDate() - 31;
- ourDate.setDate(pastDate);
 
- var pastDate1 = ourDate1.getDate() + 1;
- ourDate1.setDate(pastDate1);
-  
- //Log the date to our web console.
- console.log(ourDate);
- console.log(ourDate1);
 
- this.Start_Date = this.datePipe.transform(ourDate,"yyyy-MM-dd");
- this.End_Date = this.datePipe.transform(ourDate1,"yyyy-MM-dd");
- let a = {
-   'startdate' : this.Start_Date,
-   'enddate' : this.End_Date
-}
-this._api.getlist_billing(a).subscribe(
- (response: any) => {
-   console.log(response.Data);
-    let finaldata = [];
-   for(let a  = 0 ;a  < response.Data.length; a ++){
-     let item_list = response.Data[a].Item_Details;
-     for(let b = 0  ; b < item_list.length; b ++)
-     {
-       let cc = {
-         'Date' :  response.Data[a].createdAt,
-         'Bill_no' : response.Data[a].Bill_No,
-         'Cat' : item_list[b].Cat_Name,
-         'item_name' : item_list[b].Item_name,
-         'item_code' : item_list[b].Item_code,
-         'price' : item_list[b].Item_price,
-         'quantity' : item_list[b].Quantity,
-         'total' : item_list[b].Total_price,
-       }
-       finaldata.push(cc);
-       this.lastmonth_amt = this.lastmonth_amt + item_list[b].Total_price;
-     }
-     if(a == response.Data.length - 1){
-       this.datas = finaldata ;
-       console.log(this.datas);
-     }
-     }
 
- }
-);
-}
 
-lastyear(){
- //Get today's date using the JavaScript Date object.
- var ourDate = new Date();
- var ourDate1 = new Date();
-  
- //Change it so that it is 7 days in the past.
- var pastDate = ourDate.getDate() - 365;
- ourDate.setDate(pastDate);
-
- var pastDate1 = ourDate1.getDate() + 1;
- ourDate1.setDate(pastDate1);
-  
- //Log the date to our web console.
- console.log(ourDate);
- console.log(ourDate1);
- this.Start_Date = this.datePipe.transform(ourDate,"yyyy-MM-dd");
- this.End_Date = this.datePipe.transform(ourDate1,"yyyy-MM-dd");
- let a = {
-   'startdate' : this.Start_Date,
-   'enddate' : this.End_Date
-}
-this._api.getlist_billing(a).subscribe(
- (response: any) => {
-   console.log("Testing",response.Data);
-    let finaldata = [];
-   for(let a  = 0 ;a  < response.Data.length; a ++){
-     let item_list = response.Data[a].Item_Details;
-     for(let b = 0  ; b < item_list.length; b ++)
-     {
-       let cc = {
-         'Date' :  response.Data[a].createdAt,
-         'Bill_no' : response.Data[a].Bill_No,
-         'Cat' : item_list[b].Cat_Name,
-         'item_name' : item_list[b].Item_name,
-         'item_code' : item_list[b].Item_code,
-         'price' : item_list[b].Item_price,
-         'quantity' : item_list[b].Quantity,
-         'total' : item_list[b].Total_price,
-       }
-       finaldata.push(cc);
-       console.log(item_list[b].Total_price);
-       this.lastyear_amt = this.lastyear_amt + item_list[b].Total_price;
-     }
-     if(a == response.Data.length - 1){
-       this.datas = finaldata ;
-       console.log(this.datas);
-     }
-     }
-
- }
-);
-}
 
   
   radioModel: string = 'Month';
