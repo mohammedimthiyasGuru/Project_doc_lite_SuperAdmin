@@ -6,6 +6,8 @@ import { CompanydetailsComponent } from './companydetails/companydetails.compone
 
 import { FormsComponent } from './forms.component';
 import { MaildetailsComponent } from './maildetails/maildetails.component';
+import { CompanytypeComponent } from './master/companytype/companytype.component';
+import { SubscribertypeComponent } from './master/subscribertype/subscribertype.component';
 import { NotificationComponent } from './notification/notification.component';
 import { PaymentdetailsComponent } from './paymentdetails/paymentdetails.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
@@ -55,6 +57,22 @@ const routes: Routes = [
         component: SubscribersComponent,
         data: {
           title: 'subscriber details'
+        }
+      },
+
+      {
+        path: 'master/companytype',
+        component: CompanytypeComponent,
+        data: {
+          title: 'company type'
+        }
+      },
+
+      {
+        path: 'master/subscribertype',
+        component: SubscribertypeComponent,
+        data: {
+          title: 'subscribertype'
         }
       },
     ]

@@ -1,18 +1,17 @@
 import { Component, OnInit ,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../../api.service';
+import { ApiService } from '../../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
-  selector: 'app-companydetails',
-  templateUrl: './companydetails.component.html',
-  styleUrls: ['./companydetails.component.css']
+  selector: 'app-companytype',
+  templateUrl: './companytype.component.html',
+  styleUrls: ['./companytype.component.css']
 })
-export class CompanydetailsComponent implements OnInit {
+export class CompanytypeComponent implements OnInit {
 
-  
   company_logo : string = '';
   company_name : string = '';
   company_type : string = '';

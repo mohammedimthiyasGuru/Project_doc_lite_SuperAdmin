@@ -1,16 +1,16 @@
 import { Component, OnInit ,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../../api.service';
+import { ApiService } from '../../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
-  selector: 'app-companydetails',
-  templateUrl: './companydetails.component.html',
-  styleUrls: ['./companydetails.component.css']
+  selector: 'app-subscribertype',
+  templateUrl: './subscribertype.component.html',
+  styleUrls: ['./subscribertype.component.css']
 })
-export class CompanydetailsComponent implements OnInit {
+export class SubscribertypeComponent implements OnInit {
 
   
   company_logo : string = '';

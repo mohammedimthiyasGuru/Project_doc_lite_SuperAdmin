@@ -59,6 +59,8 @@ import { PaymentdetailsComponent } from './paymentdetails/paymentdetails.compone
 import { SubscribersComponent } from './subscribers/subscribers.component';
 import { NotificationComponent } from './notification/notification.component';
 import { MaildetailsComponent } from './maildetails/maildetails.component';
+import { CompanytypeComponent } from './master/companytype/companytype.component';
+import { SubscribertypeComponent } from './master/subscribertype/subscribertype.component';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { MaildetailsComponent } from './maildetails/maildetails.component';
     SubscribersComponent,
     NotificationComponent,
     MaildetailsComponent,
+    CompanytypeComponent,
+    SubscribertypeComponent,
   ]
 })
 export class BaseModule { }

@@ -31,4 +31,23 @@ export const navItems: INavData[] = [
     url: '/base/mail_details',
     icon: 'icon-speedometer',
   },
+  {
+    name: 'Master',
+    url: '/base',
+    icon: 'icon-speedometer',
+    children: [ 
+      {
+        name: 'Company type',
+        url: '/base/master/companytype',
+        icon: 'icon-star'
+      },
+      {
+        name: 'Subscriber type',
+        url: '/base/master/subscribertype',
+        icon: 'icon-star'
+      },
+    ]
+
+
+  },
 ];
