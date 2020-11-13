@@ -37,10 +37,16 @@ export class LoginpagesComponent implements OnInit {
    }
    else{
 
-    let a = {
-        'User_id' : this.User_id,
-        'Password' : this.Password
+
+    if(this.User_id === 'tomacinfotech@gmail.com' && this.Password === '12345'){
+      this.router.navigateByUrl('/dashboard');
     }
+
+
+    // let a = {
+    //     'User_id' : this.User_id,
+    //     'Password' : this.Password
+    // }
     // this._api.login(a).subscribe(
     //   (response: any) => {
     //     console.log(response.Data);
@@ -58,9 +64,14 @@ export class LoginpagesComponent implements OnInit {
     //     }
     //   }
     // );
-    this.router.navigateByUrl('/dashboard');
+    // this.router.navigateByUrl('/dashboard');
+  // }
+
+}
+
   }
 
 }
 
-}
+
+

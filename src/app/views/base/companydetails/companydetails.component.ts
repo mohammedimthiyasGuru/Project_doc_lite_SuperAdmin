@@ -79,6 +79,7 @@ export class CompanydetailsComponent implements OnInit {
 
   ngOnInit(): void {
   this.updatebutton = false;
+  this.displayBasic = false;
   this.company_log  = 'http://18.237.123.253:3000/api/uploads/default.jpg';
   this.company_name  = '';
   this.company_type  = '';
@@ -154,7 +155,7 @@ export class CompanydetailsComponent implements OnInit {
       'create_at' : new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}),
       'status' : 'true'
      };
-  this._api.company_type_edit(a).subscribe(
+  this._api.company_details_edit(a).subscribe(
     (response: any) => {
       console.log(response.Data);
       alert("Updated Successfully");
@@ -177,7 +178,7 @@ export class CompanydetailsComponent implements OnInit {
     let a = {
       '_id' : data
      };
-  this._api.company_type_delete(a).subscribe(
+  this._api.company_details_delete(a).subscribe(
     (response: any) => {
       console.log(response.Data);
       alert('Deleted Successfully');
@@ -190,7 +191,15 @@ export class CompanydetailsComponent implements OnInit {
   Editcompanydetailsdata(data){
    this.company_type = data.company_type;
    this.company_details_id = data._id;
+   this.company_log  = data.company_log;
+   this.company_name  = data.company_name;
+   this.company_type  = data.company_type;
+   this.no_of_emp  = data.no_of_emp;
+   this.subscriber_type  = data.subscriber_type;
+   this.package_end_date = data.package_end_date;
+   this.about_company  = data.about_company;
    this.updatebutton = true;
+   this.showBasicDialog();
   }
 
 
