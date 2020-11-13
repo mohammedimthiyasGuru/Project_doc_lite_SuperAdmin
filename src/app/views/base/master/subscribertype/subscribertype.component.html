@@ -15,8 +15,8 @@
             <div class="form-group col-sm-4">
               <label for="city">Action</label>
               <br>
-              <button *ngIf="updatebutton == false" class="btn btn-primary px-4" (click)="Itemadd()">Create</button>
-              <button *ngIf="updatebutton == true" class="btn btn-primary px-4" (click)="editAction()">Update</button>
+              <button *ngIf="updatebutton == false" class="btn btn-primary px-4" (click)="Insertsubscribertype()">Create</button>
+              <button *ngIf="updatebutton == true" class="btn btn-primary px-4" (click)="Editsubscribertype()">Update</button>
             </div>
           </div>
         </div>
@@ -42,13 +42,13 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let item of datas | filter:searchCoupon ; let i = index;">
+            <ng-container *ngFor="let item of subscribertypelist | filter:searchCoupon ; let i = index;">
               <tr>
                 <td>{{i+1}}</td>
-                <td>{{item.item_code}}</td>
+                <td>{{item.subscriber_type}}</td>
                 <td class="act-btn">
-                  <i (click)="edit(item)" class="fa fa-pencil-square-o btn btn-primary" aria-hidden="true"></i>
-                  <i (click)="delete(item._id)" class="fa fa-trash btn btn-danger" aria-hidden="true"></i>
+                  <i (click)="Editsubscribertypedata(item)" class="fa fa-pencil-square-o btn btn-primary" aria-hidden="true"></i>
+                  <i (click)="Deletesubscribertype(item._id)" class="fa fa-trash btn btn-danger" aria-hidden="true"></i>
                 </td>
               </tr>
             </ng-container>
@@ -72,7 +72,7 @@
 
 
 
-<p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Show"></p-button>
+<!-- <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Show"></p-button>
 <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua.
@@ -86,4 +86,4 @@
 </p-dialog>
 
 <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
-<p-multiSelect [options]="cities" [(ngModel)]="selectedCities" defaultLabel="Select a City" optionLabel="name"></p-multiSelect>
+<p-multiSelect [options]="cities" [(ngModel)]="selectedCities" defaultLabel="Select a City" optionLabel="name"></p-multiSelect> -->

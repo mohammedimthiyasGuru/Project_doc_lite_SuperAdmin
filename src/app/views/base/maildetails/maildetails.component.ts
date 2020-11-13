@@ -64,12 +64,12 @@ export class MaildetailsComponent implements OnInit {
     let a = {
       'cat_id' : cat_id
      }
-  this._api.getlist_items(a).subscribe(
-    (response: any) => {
-      console.log(response.Data);
-      this.datas = response.Data;
-    }
-  );
+  // this._api.getlist_items(a).subscribe(
+  //   (response: any) => {
+  //     console.log(response.Data);
+  //     this.datas = response.Data;
+  //   }
+  // );
 
   }
 
@@ -121,17 +121,17 @@ export class MaildetailsComponent implements OnInit {
       _id : data
     }
     console.log(a);
- this._api.delete_items(a).subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        if(response.Code == 404){
-          alert(response.Message);
-        }else{
-          alert(response.Message);
-          this.ngOnInit();
-        }
-      }
-    );
+//  this._api.delete_items(a).subscribe(
+//       (response: any) => {
+//         console.log(response.Data);
+//         if(response.Code == 404){
+//           alert(response.Message);
+//         }else{
+//           alert(response.Message);
+//           this.ngOnInit();
+//         }
+//       }
+//     );
   }
 
 

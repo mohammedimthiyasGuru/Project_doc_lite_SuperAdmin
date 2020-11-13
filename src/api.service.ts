@@ -19,71 +19,57 @@ export class ApiService {
   //   return this.http.get(this.apiUrl + 'userdetails/getlist');
   // }
 
-
-  login(data){
-   return this.http.post(this.apiUrl + 'chat_user/login', data);
-  }
-
-  
-  create_cata(data){
-    return this.http.post(this.apiUrl + 'chat_cat/create', data);
+   ////Company type API//////
+   company_type_list() {
+    return this.http.get(this.apiUrl + 'companytype/getlist');
    }
- 
-
-   getlist_cata(data){
-    return this.http.post(this.apiUrl + 'chat_cat/getlist_id', data);
+   company_type_insert(data) {
+    return this.http.post(this.apiUrl + 'companytype/create', data);
    }
-
-   delete_cata(data){
-    return this.http.post(this.apiUrl + 'chat_cat/delete', data);
+   company_type_edit(data) {
+    return this.http.post(this.apiUrl + 'companytype/edit', data);
    }
-
-   edit_cata(data){
-    return this.http.post(this.apiUrl + 'chat_cat/edit', data);
+   company_type_delete(data) {
+    return this.http.post(this.apiUrl + 'companytype/delete', data);
    }
+   //////////////
 
-
-   getlist_items(data){
-    return this.http.post(this.apiUrl + 'chat_item/getlist_cat_id', data);
+   ////Subscriber type API//////
+   subscriber_type_list() {
+    return this.http.get(this.apiUrl + 'subscribertype/getlist');
    }
-
-
-   create_items(data){
-    return this.http.post(this.apiUrl + 'chat_item/create', data);
+   subscriber_type_insert(data) {
+    return this.http.post(this.apiUrl + 'subscribertype/create', data);
    }
-
-   delete_items(data){
-    return this.http.post(this.apiUrl + 'chat_item/delete', data);
+   subscriber_type_edit(data) {
+    return this.http.post(this.apiUrl + 'subscribertype/edit', data);
    }
-
-   edit_items(data){
-    return this.http.post(this.apiUrl + 'chat_item/edit', data);
+   subscriber_type_delete(data) {
+    return this.http.post(this.apiUrl + 'subscribertype/delete', data);
    }
+   //////////////
 
 
-   getlist_allitemcode(data){
-    return this.http.post(this.apiUrl + 'chat_item/getlist_id', data);
-   }
+     ////Company details API//////
+     company_details_list() {
+      return this.http.get(this.apiUrl + 'companydetails/getlist');
+     }
+     company_details_insert(data) {
+      return this.http.post(this.apiUrl + 'companydetails/create', data);
+     }
+     company_details_edit(data) {
+      return this.http.post(this.apiUrl + 'companydetails/edit', data);
+     }
+     company_details_delete(data) {
+      return this.http.post(this.apiUrl + 'companydetails/delete', data);
+     }
+     //////////////
+   
+
+   
 
 
-   create_billing(data){
-    return this.http.post(this.apiUrl + 'chat_billing/create', data);
-   }
 
 
-   get_userlogout(data){
-    return this.http.post(this.apiUrl + 'chat_billing/userlogout', data);
-   }
-
-
-   getlist_billing(data){
-    return this.http.post(this.apiUrl + 'chat_billing/getlist_id', data);
-   }
-
-
-
-   forgot_password(data){
-    return this.http.post(this.apiUrl + 'chat_user/forgotpassword', data);
-   }
 
 }

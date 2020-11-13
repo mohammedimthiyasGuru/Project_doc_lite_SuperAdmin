@@ -13,23 +13,16 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 export class SubscribertypeComponent implements OnInit {
 
 
-  company_logo: string = '';
-  company_name: string = '';
-  company_type: string = '';
-  no_of_emp: string = '';
-  subscriber_type: string = '';
-  date_of_create: string = '';
-  date_of_end: string = '';
-  about_company: string = '';
 
+  subscriber_type : string = '';
+  create_at : string = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+  subscribertype_id : string = '';
+  subscribertypelist = [];
   updatebutton = false
   searchCoupon = '';
 
 
 
-  datas: any = [];
-  id_list: any = [];
-  parking_id: any;
 
   config = {
     displayKey: "description", //if objects array passed which key to be displayed defaults to description
@@ -72,133 +65,81 @@ export class SubscribertypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.updatebutton = false;
+    this.subscriber_type = '';
+    this.Listsubscribertype();
+  }
 
-    // console.log(this.storage.get('User_details'));
 
-    let cat_id = this.storage.get('cat_id');
-    // let user_details = this.storage.get('User_details');
-    console.log(cat_id);
+  //////Inserting Data///
+
+
+  Insertsubscribertype() {
     let a = {
-      'cat_id': cat_id
+      'subscriber_type' : this.subscriber_type,
+      'date_and_time' : new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"})
+      };
+  this._api.subscriber_type_insert(a).subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      alert('Added Successfully');
+      this.ngOnInit();
     }
-    this._api.getlist_items(a).subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        this.datas = response.Data;
-      }
-    );
-
+  );
   }
 
-  additems() {
-    this.router.navigateByUrl('/base/Add_Items');
-  }
 
-  // Itemadd(){
-  //   if(
-  //     this.Item_Code == '' || this.Item_Code == undefined ||
-  //     this.Item_Name == '' || this.Item_Name == undefined ||
-  //     this.Item_Price == 0 || this.Item_Price == undefined    
-  //   ){
-  //     alert('Please enter all the fields');
-  //  }
-  //  else{
-  //   console.log(this.storage.get('cat_id'));
-  //   let cat_id = this.storage.get('cat_id');
-  //   let cat_name = this.storage.get('cat_name');
-  //   console.log(this.storage.get('User_details'));
-  //   let user_details = this.storage.get('User_details');
-  //   let a = {
-  //       'item_Name' : this.Item_Name,
-  //       'item_code' : this.Item_Code,
-  //       'item_price' : this.Item_Price,
-  //       'cat_id' : cat_id,
-  //       'User_id' : user_details._id,
-  //       'cat_name': cat_name
-  //   }
-  //   console.log(a);
-  //   this._api.create_items(a).subscribe(
-  //     (response: any) => {
-  //       console.log(response.Data);
-  //       if(response.Code == 404){
-  //         alert(response.Message);
-  //       }else{
-  //         alert(response.Message);
-  //         this.ngOnInit();
-  //       }
-  //     }
-  //   );
-  // }
-
-  // }
-
-
-  delete(data) {
+  Editsubscribertype(){
     let a = {
-      _id: data
+      '_id' : this.subscribertype_id,
+      'subscriber_type' : this.subscriber_type
+     };
+  this._api.subscriber_type_edit(a).subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      alert("Updated Successfully");
+      this.ngOnInit();
     }
-    console.log(a);
-    this._api.delete_items(a).subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        if (response.Code == 404) {
-          alert(response.Message);
-        } else {
-          alert(response.Message);
-          this.ngOnInit();
-        }
-      }
-    );
+  );
   }
 
 
-  // edit(data){
-  //   console.log(data);
-  //   this.Item_Code = data.item_code;
-  //   this.Item_Name = data.item_Name;
-  //   this.Item_Price = data.item_price;
-  //   this.Items_id = data._id;
-  //   this.updatebutton = true;
-  // }
-
-  edit() {
-
+  Listsubscribertype() {
+  this._api.subscriber_type_list().subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      this.subscribertypelist = response.Data;
+    }
+  );
   }
 
-  Itemadd() {
-
+  Deletesubscribertype(data) {
+    let a = {
+      '_id' : data
+     };
+  this._api.subscriber_type_delete(a).subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      alert('Deleted Successfully');
+      this.ngOnInit();
+    }
+  );
   }
 
-  editAction() {
 
+  Editsubscribertypedata(data){
+   this.subscriber_type = data.subscriber_type;
+   this.subscribertype_id = data._id;
+   this.updatebutton = true;
   }
-  // editAction(){
-  //   let a = {
-  //     '_id': this.Items_id,
-  //     'item_Name' : this.Item_Name,
-  //     'item_code' : this.Item_Code,
-  //     'item_price' : this.Item_Price,
-  // }
-  // console.log(a);
-  // this._api.edit_items(a).subscribe(
-  //   (response: any) => {
-  //     console.log(response.Data);
-  //     if(response.Code == 404){
-  //       alert(response.Message);
-  //     }else{
-  //       alert(response.Message);
-  //       this.ngOnInit();
-  //     }
-  //   }
-  // );
-  // }
 
-  get_mech() {
 
-  }
 
   showBasicDialog() {
     this.displayBasic = true;
   }
+
+
+
+
 
 }

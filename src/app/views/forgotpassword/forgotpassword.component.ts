@@ -37,17 +37,17 @@ export class ForgotpasswordComponent implements OnInit {
       let a = {
         Email_id: this.Email_id
       }
-      this._api.forgot_password(a).subscribe(
-        (response: any) => {
-          console.log(response);
-          if(response.Code == 300){
-            alert(response.Message);
-          }else{
-            alert('Password Send to your email id');
-          }
+      // this._api.forgot_password(a).subscribe(
+      //   (response: any) => {
+      //     console.log(response);
+      //     if(response.Code == 300){
+      //       alert(response.Message);
+      //     }else{
+      //       alert('Password Send to your email id');
+      //     }
           
-        }
-      );
+      //   }
+      // );
     }
   }
 
