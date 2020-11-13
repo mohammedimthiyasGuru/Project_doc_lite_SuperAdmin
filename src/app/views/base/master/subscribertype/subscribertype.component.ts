@@ -1,4 +1,4 @@
-import { Component, OnInit ,Inject } from '@angular/core';
+import { Component, OnInit, Inject, } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
@@ -8,28 +8,28 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 @Component({
   selector: 'app-subscribertype',
   templateUrl: './subscribertype.component.html',
-  styleUrls: ['./subscribertype.component.css']
+  styleUrls: ['./subscribertype.component.css'],
 })
 export class SubscribertypeComponent implements OnInit {
 
-  
-  company_logo : string = '';
-  company_name : string = '';
-  company_type : string = '';
+
+  company_logo: string = '';
+  company_name: string = '';
+  company_type: string = '';
   no_of_emp: string = '';
-  subscriber_type : string = '';
-  date_of_create : string = '';
-  date_of_end : string = '';
-  about_company : string = '';
+  subscriber_type: string = '';
+  date_of_create: string = '';
+  date_of_end: string = '';
+  about_company: string = '';
 
   updatebutton = false
   searchCoupon = '';
 
 
 
-  datas:any = [];
+  datas: any = [];
   id_list: any = [];
-  parking_id : any;
+  parking_id: any;
 
   config = {
     displayKey: "description", //if objects array passed which key to be displayed defaults to description
@@ -44,14 +44,31 @@ export class SubscribertypeComponent implements OnInit {
     searchOnKey: 'name',// key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
   }
 
-  
+  displayBasic: boolean;
+  cities1 = [
+    { label: 'Select City', value: null },
+    { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
+    { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
+    { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
+    { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
+    { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
+  ];
+  cities = [
+    {name: 'New York', code: 'NY'},
+    {name: 'Rome', code: 'RM'},
+    {name: 'London', code: 'LDN'},
+    {name: 'Istanbul', code: 'IST'},
+    {name: 'Paris', code: 'PRS'}
+];
+  selectedCity1: any;
+  selectedCities:any;
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
     private routes: ActivatedRoute
-    ){ }
+  ) { }
 
   ngOnInit(): void {
     this.updatebutton = false;
@@ -62,18 +79,18 @@ export class SubscribertypeComponent implements OnInit {
     // let user_details = this.storage.get('User_details');
     console.log(cat_id);
     let a = {
-      'cat_id' : cat_id
-     }
-  this._api.getlist_items(a).subscribe(
-    (response: any) => {
-      console.log(response.Data);
-      this.datas = response.Data;
+      'cat_id': cat_id
     }
-  );
+    this._api.getlist_items(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.datas = response.Data;
+      }
+    );
 
   }
 
-  additems(){
+  additems() {
     this.router.navigateByUrl('/base/Add_Items');
   }
 
@@ -116,17 +133,17 @@ export class SubscribertypeComponent implements OnInit {
   // }
 
 
-  delete(data){
+  delete(data) {
     let a = {
-      _id : data
+      _id: data
     }
     console.log(a);
- this._api.delete_items(a).subscribe(
+    this._api.delete_items(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        if(response.Code == 404){
+        if (response.Code == 404) {
           alert(response.Message);
-        }else{
+        } else {
           alert(response.Message);
           this.ngOnInit();
         }
@@ -144,18 +161,17 @@ export class SubscribertypeComponent implements OnInit {
   //   this.updatebutton = true;
   // }
 
-  edit(){
+  edit() {
 
   }
 
-  Itemadd (){
+  Itemadd() {
 
   }
 
-  editAction()
-{
-  
-}
+  editAction() {
+
+  }
   // editAction(){
   //   let a = {
   //     '_id': this.Items_id,
@@ -179,6 +195,10 @@ export class SubscribertypeComponent implements OnInit {
 
   get_mech() {
 
+  }
+
+  showBasicDialog() {
+    this.displayBasic = true;
   }
 
 }

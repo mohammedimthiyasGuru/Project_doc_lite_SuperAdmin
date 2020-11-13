@@ -62,7 +62,10 @@ import { MaildetailsComponent } from './maildetails/maildetails.component';
 import { CompanytypeComponent } from './master/companytype/companytype.component';
 import { SubscribertypeComponent } from './master/subscribertype/subscribertype.component';
 import { ViewmaildetailsComponent } from './viewmaildetails/viewmaildetails.component';
-
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 @NgModule({
   imports: [
@@ -81,7 +84,11 @@ import { ViewmaildetailsComponent } from './viewmaildetails/viewmaildetails.comp
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    DialogModule,
+    ButtonModule,
+    DropdownModule,
+    MultiSelectModule
   ],
   declarations: [
 

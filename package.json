@@ -29,6 +29,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.12",
+    "@angular/cdk": "^11.0.0",
     "@angular/common": "^9.1.12",
     "@angular/compiler": "^9.1.12",
     "@angular/core": "^9.1.12",
@@ -62,6 +63,8 @@
     "ngx-webstorage": "^6.0.0",
     "ngx-webstorage-service": "^4.1.0",
     "pdfmake": "^0.1.68",
+    "primeicons": "^4.0.0",
+    "primeng": "^10.0.3",
     "rxjs": "^6.6.0",
     "simple-line-icons": "^2.5.2",
     "ts-helpers": "^1.1.2",
