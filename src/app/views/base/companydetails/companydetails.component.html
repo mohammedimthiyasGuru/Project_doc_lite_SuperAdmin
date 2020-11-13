@@ -32,6 +32,7 @@
               <th>Company type</th>
               <th>Subscriber type</th>
               <th>Date of end</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -44,6 +45,7 @@
                 <td>{{item.company_type}}</td>
                 <td>{{item.subscriber_type}}</td>
                 <td>{{item.package_end_date | date:'mediumDate' }}</td>
+                <td>{{item.status}}</td>
                 <td class="act-btn">
                   <i (click)="Editcompanydetailsdata(item)" class="fa fa-pencil-square-o btn btn-primary" aria-hidden="true"></i>
                   <i (click)="Deletecompanydetails(item._id)" class="fa fa-trash btn btn-danger" aria-hidden="true"></i>
@@ -116,7 +118,6 @@
                   </ng-container>
                 </select>
             </div>
-
             <div class="form-group col-sm-4">
               <label for="city">Date of end</label>
               <input type="date" class="form-control" id="city" [(ngModel)]="package_end_date" name="package_end_date" placeholder="Date of end">
@@ -125,6 +126,19 @@
               <label for="city">About Company</label>
               <textarea class="form-control" id="city" [(ngModel)]="about_company" name="about_company" placeholder="About Company"></textarea>
             </div>
+
+            <div class="form-group col-sm-4">
+              <label for="city">Email ID</label>
+              <input type="text" class="form-control" id="city" [(ngModel)]="email" name="email" placeholder="Login Email id">
+            </div>
+
+
+            <div class="form-group col-sm-4">
+              <label for="city">Password</label>
+              <input type="text" class="form-control" id="city" [(ngModel)]="password" name="password" placeholder="Login Password">
+            </div>
+
+
             <div class="form-group col-sm-12">
               <label for="city">Action</label>
               <br>
@@ -132,7 +146,6 @@
               <button *ngIf="updatebutton == true" class="btn btn-primary px-4" (click)="Editcompanydetails()">Update</button>
             </div>
         </div>
-
       </div>
     </div><!--/.col-->
   </div><!--/.row-->

@@ -24,6 +24,11 @@ export class CompanydetailsComponent implements OnInit {
   create_at : string = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
   company_details_list = [];
   company_details_id : string = '';
+  email : string = '';
+  password : string = '';
+  company_id : string = '';
+
+
 
   ///addition data///
   company_type_list = [];
@@ -90,6 +95,9 @@ export class CompanydetailsComponent implements OnInit {
   this.create_at  = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
   this.company_details_list = [];
   this.company_details_id  = '';
+  this.email = '';
+  this.password = '';
+  this.company_id = ''
   this.listcompanytype();
   this.listsubscribertype();
   this.Listcompanydetails();
@@ -129,7 +137,10 @@ export class CompanydetailsComponent implements OnInit {
       'package_end_date' : this.package_end_date,
       'about_company' : this.about_company,
       'create_at' : new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}),
-      'status' : 'true'
+      'status' : 'true',
+      'email' : this.email,
+      'password' : this.password,
+      'company_id' : this.company_name.toLowerCase().replace(/\s/g,"")
       };
       console.log(a);
   this._api.company_details_insert(a).subscribe(
@@ -153,7 +164,10 @@ export class CompanydetailsComponent implements OnInit {
       'package_end_date' : this.package_end_date,
       'about_company' : this.about_company,
       'create_at' : new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}),
-      'status' : 'true'
+      'status' : 'true',
+      'email' : this.email,
+      'password' : this.password,
+      'company_id' : this.company_name.toLowerCase().replace(/\s/g,"")
      };
   this._api.company_details_edit(a).subscribe(
     (response: any) => {
@@ -198,6 +212,9 @@ export class CompanydetailsComponent implements OnInit {
    this.subscriber_type  = data.subscriber_type;
    this.package_end_date = data.package_end_date;
    this.about_company  = data.about_company;
+   this.email = data.email;
+   this.password = data.password;
+   this.company_id =  data.company_id;
    this.updatebutton = true;
    this.showBasicDialog();
   }

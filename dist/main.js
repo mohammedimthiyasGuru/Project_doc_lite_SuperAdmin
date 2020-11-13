@@ -420,47 +420,46 @@ var ApiService = /** @class */ (function () {
     // user_list() {
     //   return this.http.get(this.apiUrl + 'userdetails/getlist');
     // }
-    ApiService.prototype.login = function (data) {
-        return this.http.post(this.apiUrl + 'chat_user/login', data);
+    ////Company type API//////
+    ApiService.prototype.company_type_list = function () {
+        return this.http.get(this.apiUrl + 'companytype/getlist');
     };
-    ApiService.prototype.create_cata = function (data) {
-        return this.http.post(this.apiUrl + 'chat_cat/create', data);
+    ApiService.prototype.company_type_insert = function (data) {
+        return this.http.post(this.apiUrl + 'companytype/create', data);
     };
-    ApiService.prototype.getlist_cata = function (data) {
-        return this.http.post(this.apiUrl + 'chat_cat/getlist_id', data);
+    ApiService.prototype.company_type_edit = function (data) {
+        return this.http.post(this.apiUrl + 'companytype/edit', data);
     };
-    ApiService.prototype.delete_cata = function (data) {
-        return this.http.post(this.apiUrl + 'chat_cat/delete', data);
+    ApiService.prototype.company_type_delete = function (data) {
+        return this.http.post(this.apiUrl + 'companytype/delete', data);
     };
-    ApiService.prototype.edit_cata = function (data) {
-        return this.http.post(this.apiUrl + 'chat_cat/edit', data);
+    //////////////
+    ////Subscriber type API//////
+    ApiService.prototype.subscriber_type_list = function () {
+        return this.http.get(this.apiUrl + 'subscribertype/getlist');
     };
-    ApiService.prototype.getlist_items = function (data) {
-        return this.http.post(this.apiUrl + 'chat_item/getlist_cat_id', data);
+    ApiService.prototype.subscriber_type_insert = function (data) {
+        return this.http.post(this.apiUrl + 'subscribertype/create', data);
     };
-    ApiService.prototype.create_items = function (data) {
-        return this.http.post(this.apiUrl + 'chat_item/create', data);
+    ApiService.prototype.subscriber_type_edit = function (data) {
+        return this.http.post(this.apiUrl + 'subscribertype/edit', data);
     };
-    ApiService.prototype.delete_items = function (data) {
-        return this.http.post(this.apiUrl + 'chat_item/delete', data);
+    ApiService.prototype.subscriber_type_delete = function (data) {
+        return this.http.post(this.apiUrl + 'subscribertype/delete', data);
     };
-    ApiService.prototype.edit_items = function (data) {
-        return this.http.post(this.apiUrl + 'chat_item/edit', data);
+    //////////////
+    ////Company details API//////
+    ApiService.prototype.company_details_list = function () {
+        return this.http.get(this.apiUrl + 'companydetails/getlist');
     };
-    ApiService.prototype.getlist_allitemcode = function (data) {
-        return this.http.post(this.apiUrl + 'chat_item/getlist_id', data);
+    ApiService.prototype.company_details_insert = function (data) {
+        return this.http.post(this.apiUrl + 'companydetails/create', data);
     };
-    ApiService.prototype.create_billing = function (data) {
-        return this.http.post(this.apiUrl + 'chat_billing/create', data);
+    ApiService.prototype.company_details_edit = function (data) {
+        return this.http.post(this.apiUrl + 'companydetails/edit', data);
     };
-    ApiService.prototype.get_userlogout = function (data) {
-        return this.http.post(this.apiUrl + 'chat_billing/userlogout', data);
-    };
-    ApiService.prototype.getlist_billing = function (data) {
-        return this.http.post(this.apiUrl + 'chat_billing/getlist_id', data);
-    };
-    ApiService.prototype.forgot_password = function (data) {
-        return this.http.post(this.apiUrl + 'chat_user/forgotpassword', data);
+    ApiService.prototype.company_details_delete = function (data) {
+        return this.http.post(this.apiUrl + 'companydetails/delete', data);
     };
     ApiService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -988,15 +987,16 @@ var ForgotpasswordComponent = /** @class */ (function () {
             var a = {
                 Email_id: this.Email_id
             };
-            this._api.forgot_password(a).subscribe(function (response) {
-                console.log(response);
-                if (response.Code == 300) {
-                    alert(response.Message);
-                }
-                else {
-                    alert('Password Send to your email id');
-                }
-            });
+            // this._api.forgot_password(a).subscribe(
+            //   (response: any) => {
+            //     console.log(response);
+            //     if(response.Code == 300){
+            //       alert(response.Message);
+            //     }else{
+            //       alert('Password Send to your email id');
+            //     }
+            //   }
+            // );
         }
     };
     ForgotpasswordComponent.ctorParameters = function () { return [
@@ -1079,10 +1079,13 @@ var LoginpagesComponent = /** @class */ (function () {
             alert('Please enter all the fields');
         }
         else {
-            var a = {
-                'User_id': this.User_id,
-                'Password': this.Password
-            };
+            if (this.User_id === 'tomacinfotech@gmail.com' && this.Password === '12345') {
+                this.router.navigateByUrl('/dashboard');
+            }
+            // let a = {
+            //     'User_id' : this.User_id,
+            //     'Password' : this.Password
+            // }
             // this._api.login(a).subscribe(
             //   (response: any) => {
             //     console.log(response.Data);
@@ -1098,7 +1101,8 @@ var LoginpagesComponent = /** @class */ (function () {
             //     }
             //   }
             // );
-            this.router.navigateByUrl('/dashboard');
+            // this.router.navigateByUrl('/dashboard');
+            // }
         }
     };
     LoginpagesComponent.ctorParameters = function () { return [
@@ -1141,8 +1145,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    apiUrl: 'http://13.52.247.137:3000/',
-    imageURL: 'http://13.52.247.137:3000/'
+    apiUrl: 'http://18.237.123.253:3000/api/',
+    imageURL: 'http://18.237.123.253:3000/api/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
